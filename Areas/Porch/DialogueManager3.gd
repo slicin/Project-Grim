@@ -41,7 +41,7 @@ func read_next_line():
 	
 	var audio_path = "res://Areas/Porch/Voice/{num}.mp3"
 	var real_path = audio_path.format({"num": str(index)})
-	print(real_path)
+#	print(real_path)
 	if load(real_path):
 		audio.stream = load(real_path)
 		audio.play()

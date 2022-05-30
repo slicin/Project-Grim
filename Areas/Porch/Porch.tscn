@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Areas/Porch/DialogueManager3.gd" type="Script" id=1]
 [ext_resource path="res://Dialogue/dogicabold.ttf" type="DynamicFontData" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Grim/Grim.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Areas/Underworld/Sprites/underworldClouds.png" type="Texture" id=14]
 [ext_resource path="res://Areas/Underworld/Sprites/underworld.png" type="Texture" id=15]
+[ext_resource path="res://Areas/Porch/sedative-110241.mp3" type="AudioStream" id=16]
 
 [sub_resource type="Animation" id=6]
 resource_name = "GrassBlow"
@@ -47,25 +48,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 3 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=4]
-default_font = SubResource( 5 )
-
-[sub_resource type="InputEventAction" id=8]
-action = "continue"
-
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 461, 138 )
@@ -165,6 +147,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.12549 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D/Restart:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 10, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 length = 0.001
@@ -240,6 +234,37 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D/Restart:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 5 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "continue"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [node name="Porch" type="Node2D"]
 script = ExtResource( 11 )
@@ -281,53 +306,6 @@ texture = ExtResource( 4 )
 visible = false
 scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
-
-[node name="DialogueManager3" type="Node2D" parent="."]
-script = ExtResource( 1 )
-file = "res://Dialogue/dialogue_porch.txt"
-
-[node name="Timer" type="Timer" parent="DialogueManager3"]
-wait_time = 2.0
-
-[node name="ChatBubble" type="VBoxContainer" parent="DialogueManager3"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -14.0
-margin_top = -114.0
-margin_right = 14.0
-margin_bottom = -46.0
-grow_horizontal = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="DialogueManager3/ChatBubble"]
-margin_right = 28.0
-margin_bottom = 46.0
-theme = SubResource( 2 )
-text = "aa"
-align = 1
-valign = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="DialogueManager3/ChatBubble/Label"]
-modulate = Color( 1, 1, 1, 0.752941 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_right = 20.0
-grow_horizontal = 2
-texture = ExtResource( 10 )
-
-[node name="Button" type="Button" parent="DialogueManager3/ChatBubble"]
-margin_top = 50.0
-margin_right = 28.0
-margin_bottom = 68.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource( 4 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 9 )
-text = ">"
 
 [node name="Barrier1" type="StaticBody2D" parent="."]
 position = Vector2( 4, -31 )
@@ -413,6 +391,7 @@ text = "The End"
 
 [node name="Restart" type="Button" parent="Node2D"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 258.0
 margin_top = 256.0
 margin_right = 323.0
@@ -440,10 +419,62 @@ text = "Yes. Are you ready?"
 anims/FadeOut = SubResource( 15 )
 anims/RESET = SubResource( 16 )
 
-[connection signal="timeout" from="DialogueManager3/Timer" to="DialogueManager3" method="begin_dialogue"]
-[connection signal="button_up" from="DialogueManager3/ChatBubble/Button" to="DialogueManager3" method="read_next_line"]
+[node name="DialogueManager3" type="Node2D" parent="."]
+script = ExtResource( 1 )
+file = "res://Dialogue/dialogue_porch.txt"
+
+[node name="Timer" type="Timer" parent="DialogueManager3"]
+wait_time = 2.0
+
+[node name="ChatBubble" type="VBoxContainer" parent="DialogueManager3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -14.0
+margin_top = -114.0
+margin_right = 14.0
+margin_bottom = -46.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="DialogueManager3/ChatBubble"]
+margin_right = 28.0
+margin_bottom = 46.0
+theme = SubResource( 2 )
+text = "aa"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueManager3/ChatBubble/Label"]
+modulate = Color( 1, 1, 1, 0.752941 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = 20.0
+grow_horizontal = 2
+texture = ExtResource( 10 )
+
+[node name="Button" type="Button" parent="DialogueManager3/ChatBubble"]
+margin_top = 50.0
+margin_right = 28.0
+margin_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource( 4 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 9 )
+text = ">"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -25.0
+autoplay = true
+
 [connection signal="body_entered" from="ChairTrigger" to="." method="_on_ChairTrigger_body_entered"]
 [connection signal="body_exited" from="ChairTrigger" to="." method="_on_ChairTrigger_body_exited"]
 [connection signal="button_up" from="Node2D/Restart" to="." method="restart_game"]
 [connection signal="button_up" from="Response1" to="DialogueManager3" method="_on_Response1_button_up"]
 [connection signal="button_up" from="Response2" to="DialogueManager3" method="_on_Response2_button_up"]
+[connection signal="timeout" from="DialogueManager3/Timer" to="DialogueManager3" method="begin_dialogue"]
+[connection signal="button_up" from="DialogueManager3/ChatBubble/Button" to="DialogueManager3" method="read_next_line"]

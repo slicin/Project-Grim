@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sedative-110241.mp3-70cacdeb8e2da43e2148fe7c5b312076.mp3str"
+
+[deps]
+
+source_file="res://Areas/Porch/sedative-110241.mp3"
+dest_files=[ "res://.import/sedative-110241.mp3-70cacdeb8e2da43e2148fe7c5b312076.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
