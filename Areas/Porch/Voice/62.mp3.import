@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/62.mp3-98e44934ee6786274341d7baeff4e40c.mp3str"
+
+[deps]
+
+source_file="res://Areas/Porch/Voice/62.mp3"
+dest_files=[ "res://.import/62.mp3-98e44934ee6786274341d7baeff4e40c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

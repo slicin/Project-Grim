@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Grim/Grim.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scroll/Scroll.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Areas/Underworld/Underworld.gd" type="Script" id=3]
+[ext_resource path="res://Dialogue/dogicabold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Areas/Underworld/Sprites/underworld.png" type="Texture" id=5]
+[ext_resource path="res://Areas/Underworld/Sprites/underworldClouds.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=7]
+resource_name = "CloudAnim"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 461, 138 )
+
+[node name="Underworld" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BG" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Clouds" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clouds"]
+autoplay = "CloudAnim"
+anims/CloudAnim = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="Scroll" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, 172 )
+
+[node name="Grim" parent="." instance=ExtResource( 1 )]
+position = Vector2( -302, 169 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 251.0
+margin_top = 258.0
+margin_right = 391.0
+margin_bottom = 276.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource( 4 )
+text = "Continue"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Barrier1" type="StaticBody2D" parent="."]
+position = Vector2( -6, -49 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier1"]
+shape = SubResource( 6 )
+
+[node name="Barrier2" type="StaticBody2D" parent="."]
+position = Vector2( -4, 438 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier2"]
+shape = SubResource( 6 )
+
+[node name="Barrier3" type="StaticBody2D" parent="."]
+position = Vector2( 864, 217 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier3"]
+shape = SubResource( 6 )
+
+[node name="Barrier4" type="StaticBody2D" parent="."]
+position = Vector2( -862, 214 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier4"]
+shape = SubResource( 6 )
+
+[connection signal="button_up" from="Button" to="." method="load_next_area"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/12.mp3-4017fd628d2ae62df12d4af4fdc8c7f9.mp3str"
+
+[deps]
+
+source_file="res://Areas/FrontDoor/Voice/12.mp3"
+dest_files=[ "res://.import/12.mp3-4017fd628d2ae62df12d4af4fdc8c7f9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,366 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://Grim/Grim.gd" type="Script" id=1]
+[ext_resource path="res://Dialogue/dogicabold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Grim/charactersWalk.png" type="Texture" id=3]
+[ext_resource path="res://Areas/Interior/Interior.gd" type="Script" id=4]
+[ext_resource path="res://Areas/Interior/Sprites/insideBackground.png" type="Texture" id=5]
+[ext_resource path="res://Areas/Interior/Sprites/insideRoom.png" type="Texture" id=6]
+[ext_resource path="res://Areas/Interior/Telephone.gd" type="Script" id=7]
+[ext_resource path="res://Areas/Interior/GrandClock.gd" type="Script" id=8]
+[ext_resource path="res://Areas/Interior/DeerHead.gd" type="Script" id=9]
+[ext_resource path="res://Areas/Interior/ShipPainting.gd" type="Script" id=10]
+[ext_resource path="res://Areas/Interior/Pictureof3.gd" type="Script" id=11]
+[ext_resource path="res://Areas/Interior/Glasses.gd" type="Script" id=12]
+[ext_resource path="res://Areas/Interior/Sprites/insideMidground.png" type="Texture" id=13]
+[ext_resource path="res://Areas/Interior/Sprites/insideForeground.png" type="Texture" id=14]
+[ext_resource path="res://Areas/Interior/Piano.gd" type="Script" id=15]
+[ext_resource path="res://Areas/Interior/Fireplace.gd" type="Script" id=16]
+[ext_resource path="res://Areas/Interior/CoatHooks.gd" type="Script" id=17]
+[ext_resource path="res://Areas/Interior/Mirror.gd" type="Script" id=18]
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
+extra_spacing_top = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 12 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 570, 138 )
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 25.0
+height = 0.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "IdleLeft"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "IdleRight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "WalkLeft"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 4, 1, 5 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "WalkRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 0, 3 ]
+}
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 22.3607
+
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 39.0
+height = 188.0
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 46.0109
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 102, 41 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 46, 59 )
+
+[sub_resource type="CircleShape2D" id=23]
+radius = 16.1245
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 138, 42 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 141, 21 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 17, 64 )
+
+[sub_resource type="CircleShape2D" id=27]
+radius = 35.2278
+
+[sub_resource type="DynamicFont" id=16]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=17]
+default_font = SubResource( 16 )
+
+[node name="Interior" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+
+[node name="Decor" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Table" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+
+[node name="Foreground" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+z_index = 1
+texture = ExtResource( 14 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 254.0
+margin_top = 275.0
+margin_right = 394.0
+margin_bottom = 293.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource( 4 )
+text = "Continue"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -319.0
+margin_top = -65.0
+margin_right = 524.0
+margin_bottom = 275.0
+theme = SubResource( 13 )
+text = "Interior scene under construction"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="HouseBarrier1" type="StaticBody2D" parent="."]
+position = Vector2( -1, -72 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseBarrier1"]
+shape = SubResource( 14 )
+
+[node name="HouseBarrier2" type="StaticBody2D" parent="."]
+position = Vector2( -1, -72 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseBarrier2"]
+position = Vector2( 0, 436 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HouseBarrier2"]
+position = Vector2( -971, 231 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HouseBarrier2"]
+position = Vector2( 975, 233 )
+shape = SubResource( 14 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Grim" type="KinematicBody2D" parent="YSort"]
+position = Vector2( -256, 130 )
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Grim"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+hframes = 6
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Grim"]
+position = Vector2( 0, 51 )
+shape = SubResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Grim"]
+autoplay = "IdleRight"
+anims/IdleLeft = SubResource( 6 )
+anims/IdleRight = SubResource( 5 )
+anims/RESET = SubResource( 9 )
+anims/WalkLeft = SubResource( 10 )
+anims/WalkRight = SubResource( 11 )
+
+[node name="ClickableItems" type="Node2D" parent="."]
+
+[node name="Telephone" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -312, 15 )
+input_pickable = true
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Telephone"]
+shape = SubResource( 18 )
+
+[node name="GrandClock" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -94, -25 )
+collision_layer = 2
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/GrandClock"]
+shape = SubResource( 19 )
+
+[node name="DeerHead" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -194, -160 )
+input_pickable = true
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/DeerHead"]
+shape = SubResource( 20 )
+
+[node name="ShipPainting" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( 228, -59 )
+input_pickable = true
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/ShipPainting"]
+shape = SubResource( 21 )
+
+[node name="Pictureof3" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( 23, -113 )
+input_pickable = true
+script = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Pictureof3"]
+shape = SubResource( 22 )
+
+[node name="Glasses" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -262, 19 )
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Glasses"]
+shape = SubResource( 23 )
+
+[node name="Piano" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -220, 184 )
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Piano"]
+shape = SubResource( 24 )
+
+[node name="Fireplace" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( 230, 208 )
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Fireplace"]
+shape = SubResource( 25 )
+
+[node name="CoatHooks" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -379, -47 )
+input_pickable = true
+script = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/CoatHooks"]
+shape = SubResource( 26 )
+
+[node name="Mirror" type="StaticBody2D" parent="ClickableItems"]
+position = Vector2( -187, -48 )
+input_pickable = true
+script = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItems/Mirror"]
+shape = SubResource( 27 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="ThoughtText" type="Label" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -253.0
+margin_top = 233.0
+margin_right = 251.0
+margin_bottom = 289.0
+grow_horizontal = 2
+theme = SubResource( 17 )
+text = "Left click on objects to examine them."
+align = 1
+valign = 1
+autowrap = true
+
+[connection signal="button_up" from="Button" to="." method="load_next_area"]
+[connection signal="input_event" from="ClickableItems/Telephone" to="ClickableItems/Telephone" method="_on_Telephone_input_event"]
+[connection signal="input_event" from="ClickableItems/GrandClock" to="ClickableItems/GrandClock" method="_on_GrandClock_input_event"]
+[connection signal="input_event" from="ClickableItems/DeerHead" to="ClickableItems/DeerHead" method="_on_DeerHead_input_event"]
+[connection signal="input_event" from="ClickableItems/ShipPainting" to="ClickableItems/ShipPainting" method="_on_ShipPainting_input_event"]
+[connection signal="input_event" from="ClickableItems/Pictureof3" to="ClickableItems/Pictureof3" method="_on_Pictureof3_input_event"]
+[connection signal="input_event" from="ClickableItems/Glasses" to="ClickableItems/Glasses" method="_on_Glasses_input_event"]
+[connection signal="input_event" from="ClickableItems/Piano" to="ClickableItems/Piano" method="_on_Piano_input_event"]
+[connection signal="input_event" from="ClickableItems/Fireplace" to="ClickableItems/Fireplace" method="_on_Fireplace_input_event"]
+[connection signal="input_event" from="ClickableItems/CoatHooks" to="ClickableItems/CoatHooks" method="_on_CoatHooks_input_event"]
+[connection signal="input_event" from="ClickableItems/Mirror" to="ClickableItems/Mirror" method="_on_Mirror_input_event"]

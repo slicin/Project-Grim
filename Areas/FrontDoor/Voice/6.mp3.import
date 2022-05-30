@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6.mp3-e588cfc869494c9c0815a7596c5caf60.mp3str"
+
+[deps]
+
+source_file="res://Areas/FrontDoor/Voice/6.mp3"
+dest_files=[ "res://.import/6.mp3-e588cfc869494c9c0815a7596c5caf60.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

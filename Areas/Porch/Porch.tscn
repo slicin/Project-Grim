@@ -1,0 +1,449 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Areas/Porch/DialogueManager3.gd" type="Script" id=1]
+[ext_resource path="res://Dialogue/dogicabold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scroll/vavont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Areas/Porch/Sprites/porchDeath.png" type="Texture" id=4]
+[ext_resource path="res://Areas/Porch/Sprites/porchGranny.png" type="Texture" id=5]
+[ext_resource path="res://Areas/Porch/Sprites/porchFlowerpots.png" type="Texture" id=6]
+[ext_resource path="res://Areas/Porch/Sprites/porchBg.png" type="Texture" id=7]
+[ext_resource path="res://Areas/Porch/Sprites/porchGrass.png" type="Texture" id=8]
+[ext_resource path="res://Areas/Porch/Sprites/porchScythe.png" type="Texture" id=9]
+[ext_resource path="res://Dialogue/chat_bubble.png" type="Texture" id=10]
+[ext_resource path="res://Areas/Porch/Porch.gd" type="Script" id=11]
+[ext_resource path="res://Areas/Porch/Sprites/porchGrassAnim.png" type="Texture" id=12]
+[ext_resource path="res://Grim/Grim.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Areas/Underworld/Sprites/underworldClouds.png" type="Texture" id=14]
+[ext_resource path="res://Areas/Underworld/Sprites/underworld.png" type="Texture" id=15]
+
+[sub_resource type="Animation" id=6]
+resource_name = "GrassBlow"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.9, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 5 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "continue"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 461, 138 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 49, 265 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 229, 11 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 447, 22 )
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 65.4905
+
+[sub_resource type="DynamicFont" id=17]
+size = 100
+outline_size = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 17 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "FadeOut"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Granny:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Death:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 10, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D/BG:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 10, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.12549 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D/Clouds:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 10, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.12549 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Granny:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Death:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D/BG:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D/Clouds:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Porch" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="BG" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Grass" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="GrassAnim" type="Sprite" parent="."]
+position = Vector2( 0, 255 )
+scale = Vector2( 4, 4 )
+z_index = 1
+texture = ExtResource( 12 )
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GrassAnim"]
+autoplay = "GrassBlow"
+anims/GrassBlow = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="Granny" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Death" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Scythe" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+
+[node name="DialogueManager3" type="Node2D" parent="."]
+script = ExtResource( 1 )
+file = "res://Dialogue/dialogue_porch.txt"
+
+[node name="Timer" type="Timer" parent="DialogueManager3"]
+wait_time = 2.0
+
+[node name="ChatBubble" type="VBoxContainer" parent="DialogueManager3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -14.0
+margin_top = -114.0
+margin_right = 14.0
+margin_bottom = -46.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="DialogueManager3/ChatBubble"]
+margin_right = 28.0
+margin_bottom = 46.0
+theme = SubResource( 2 )
+text = "aa"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueManager3/ChatBubble/Label"]
+modulate = Color( 1, 1, 1, 0.752941 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = 20.0
+grow_horizontal = 2
+texture = ExtResource( 10 )
+
+[node name="Button" type="Button" parent="DialogueManager3/ChatBubble"]
+margin_top = 50.0
+margin_right = 28.0
+margin_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource( 4 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 9 )
+text = ">"
+
+[node name="Barrier1" type="StaticBody2D" parent="."]
+position = Vector2( 4, -31 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier1"]
+shape = SubResource( 10 )
+
+[node name="Barrier2" type="StaticBody2D" parent="."]
+position = Vector2( 452, 133 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier2"]
+shape = SubResource( 11 )
+
+[node name="Barrier3" type="StaticBody2D" parent="."]
+position = Vector2( -452, 133 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier3"]
+shape = SubResource( 11 )
+
+[node name="Barrier4" type="StaticBody2D" parent="."]
+position = Vector2( 42, 190 )
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier4"]
+shape = SubResource( 12 )
+
+[node name="Barrier5" type="StaticBody2D" parent="."]
+position = Vector2( 20, 324 )
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier5"]
+shape = SubResource( 13 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="FlowerPots" type="Sprite" parent="YSort"]
+position = Vector2( 42, 184 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+offset = Vector2( -10.5, -46 )
+
+[node name="Grim" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( -285, 91 )
+
+[node name="ChairTrigger" type="Area2D" parent="."]
+position = Vector2( -121, 107 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChairTrigger"]
+shape = SubResource( 14 )
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 1
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+margin_left = -417.0
+margin_top = -324.0
+margin_right = 430.0
+margin_bottom = 327.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="BG" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 15 )
+
+[node name="Clouds" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -164.5
+margin_top = -71.0
+margin_right = 164.5
+margin_bottom = 71.0
+theme = SubResource( 18 )
+text = "The End"
+
+[node name="Restart" type="Button" parent="Node2D"]
+visible = false
+margin_left = 258.0
+margin_top = 256.0
+margin_right = 323.0
+margin_bottom = 276.0
+text = "RESTART"
+
+[node name="Response1" type="Button" parent="."]
+margin_left = -69.0
+margin_top = -46.0
+margin_right = 75.0
+margin_bottom = -26.0
+text = "Your time has come."
+
+[node name="Response2" type="Button" parent="."]
+margin_left = -68.0
+margin_top = -15.0
+margin_right = 76.0
+margin_bottom = 5.0
+shortcut_in_tooltip = false
+text = "Yes. Are you ready?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeOut = SubResource( 15 )
+anims/RESET = SubResource( 16 )
+
+[connection signal="timeout" from="DialogueManager3/Timer" to="DialogueManager3" method="begin_dialogue"]
+[connection signal="button_up" from="DialogueManager3/ChatBubble/Button" to="DialogueManager3" method="read_next_line"]
+[connection signal="body_entered" from="ChairTrigger" to="." method="_on_ChairTrigger_body_entered"]
+[connection signal="body_exited" from="ChairTrigger" to="." method="_on_ChairTrigger_body_exited"]
+[connection signal="button_up" from="Node2D/Restart" to="." method="restart_game"]
+[connection signal="button_up" from="Response1" to="DialogueManager3" method="_on_Response1_button_up"]
+[connection signal="button_up" from="Response2" to="DialogueManager3" method="_on_Response2_button_up"]
